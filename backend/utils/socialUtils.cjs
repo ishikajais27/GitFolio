@@ -1,47 +1,47 @@
+// backend/utils/socialUtils.cjs
 const socialIcons = {
-  github: 'https://cdn-icons-png.flaticon.com/512/733/733553.png',
-  linkedin: 'https://cdn-icons-png.flaticon.com/512/3536/3536505.png',
-  twitter: 'https://cdn-icons-png.flaticon.com/512/733/733579.png',
-  instagram: 'https://cdn-icons-png.flaticon.com/512/2111/2111463.png',
-  youtube: 'https://cdn-icons-png.flaticon.com/512/733/733646.png',
+  linkedin:
+    'https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white',
+  twitter:
+    'https://img.shields.io/badge/-Twitter-1DA1F2?style=flat-square&logo=Twitter&logoColor=white',
+  instagram:
+    'https://img.shields.io/badge/-Instagram-E4405F?style=flat-square&logo=Instagram&logoColor=white',
+  youtube:
+    'https://img.shields.io/badge/-YouTube-FF0000?style=flat-square&logo=YouTube&logoColor=white',
   leetcode:
-    'https://cdn.iconscout.com/icon/free/png-256/free-leetcode-3521542-2944960.png',
+    'https://img.shields.io/badge/-LeetCode-FFA116?style=flat-square&logo=LeetCode&logoColor=black',
   hackerrank:
-    'https://cdn.iconscout.com/icon/free/png-256/free-hackerrank-3628233-3031065.png',
-  email: 'https://cdn-icons-png.flaticon.com/512/561/561127.png',
-  website: 'https://cdn-icons-png.flaticon.com/512/1006/1006771.png',
+    'https://img.shields.io/badge/-HackerRank-2EC866?style=flat-square&logo=HackerRank&logoColor=white',
+  email:
+    'https://img.shields.io/badge/-Email-D14836?style=flat-square&logo=Gmail&logoColor=white',
+  website:
+    'https://img.shields.io/badge/-Website-4285F4?style=flat-square&logo=Google-Chrome&logoColor=white',
 }
 
-const formatSocialUrl = (platform, value) => {
-  if (!value) return ''
+exports.formatSocialUrl = (platform, url) => {
+  if (!url) return ''
 
-  if (value.startsWith('http')) return value
+  const lowerUrl = url.toLowerCase()
 
-  switch (platform) {
-    case 'linkedin':
-      return value.includes('/')
-        ? `https://linkedin.com/in/${value}`
-        : `https://linkedin.com/in/${value}`
-    case 'twitter':
-      return `https://twitter.com/${value}`
-    case 'instagram':
-      return `https://instagram.com/${value}`
-    case 'youtube':
-      return value.startsWith('UC')
-        ? `https://youtube.com/channel/${value}`
-        : `https://youtube.com/${value}`
-    case 'email':
-      return `mailto:${value}`
-    default:
-      return `https://${platform}.com/${value}`
+  if (platform === 'linkedin' && !lowerUrl.includes('linkedin.com')) {
+    return `https://www.linkedin.com/in/${url}`
   }
+  if (platform === 'twitter' && !lowerUrl.includes('twitter.com')) {
+    return `https://twitter.com/${url}`
+  }
+  if (platform === 'instagram' && !lowerUrl.includes('instagram.com')) {
+    return `https://instagram.com/${url}`
+  }
+  if (platform === 'email' && !lowerUrl.includes('mailto:')) {
+    return `mailto:${url}`
+  }
+  if (platform === 'website' && !lowerUrl.startsWith('http')) {
+    return `https://${url}`
+  }
+
+  return url
 }
 
-const getSocialIcon = (platform) => {
-  return socialIcons[platform] || socialIcons.website
-}
-
-module.exports = {
-  formatSocialUrl,
-  getSocialIcon,
+exports.getSocialIcon = (platform) => {
+  return socialIcons[platform] || ''
 }
