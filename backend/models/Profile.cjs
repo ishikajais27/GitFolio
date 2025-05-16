@@ -1,48 +1,32 @@
 const mongoose = require('mongoose')
 
-const ProfileSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+const socialLinkSchema = new mongoose.Schema({
+  platform: String,
+  url: String,
+  icon: String,
+  alt: String,
+})
+
+const profileSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
   name: String,
   bio: String,
+  avatarUrl: String,
   location: String,
   website: String,
   company: String,
-  avatarUrl: String,
-  githubUrl: {
-    type: String,
-    required: true,
-  },
-  twitterUsername: String,
+  githubUrl: String,
   followers: Number,
   following: Number,
   publicRepos: Number,
   topLanguages: [String],
-  pinnedRepos: [
-    {
-      name: String,
-      description: String,
-      url: String,
-      stars: Number,
-      forks: Number,
-    },
-  ],
-  contributions: {
-    lastYear: Number,
-    streak: Number,
-  },
+  skills: mongoose.Schema.Types.Mixed,
   markdownContent: String,
-  template: {
-    type: String,
-    default: 'default',
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+  template: String,
+  socialLinks: [socialLinkSchema],
+  lastUpdated: { type: Date, default: Date.now },
 })
 
-module.exports = mongoose.model('Profile', ProfileSchema)
+profileSchema.index({ username: 1, template: 1 }, { unique: true })
+
+module.exports = mongoose.model('Profile', profileSchema)
