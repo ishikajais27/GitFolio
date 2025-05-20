@@ -1,11 +1,7 @@
 import GeneratorPage from './pages/GeneratorPage'
 
 function App() {
-  return (
-    <div className="App">
-      <GeneratorPage />
-    </div>
-  )
+  return <GeneratorPage />
 }
 
 export default App

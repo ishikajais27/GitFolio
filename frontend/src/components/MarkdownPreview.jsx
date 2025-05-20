@@ -1,72 +1,180 @@
-import ReactMarkdown from 'react-markdown'
-import 'github-markdown-css'
-import { Button, Box, Typography, Paper } from '@mui/material'
-import { saveAs } from 'file-saver'
-import EditIcon from '@mui/icons-material/Edit'
+// import ReactMarkdown from 'react-markdown'
+// import 'github-markdown-css'
+// import { Button, Box, Typography, Paper } from '@mui/material'
+// import { saveAs } from 'file-saver'
+// import DownloadIcon from '@mui/icons-material/Download'
+
+// export default function MarkdownPreview({ markdown }) {
+//   const handleDownload = () => {
+//     const blob = new Blob([markdown], { type: 'text/markdown' })
+//     saveAs(blob, 'README.md')
+//   }
+
+//   const handleCopy = () => {
+//     navigator.clipboard.writeText(markdown)
+//   }
+
+//   return (
+//     <Paper elevation={2} sx={{ p: 2, mt: 3 }}>
+//       <Box
+//         sx={{
+//           display: 'flex',
+//           justifyContent: 'space-between',
+//           alignItems: 'center',
+//           mb: 2,
+//         }}
+//       >
+//         <Typography variant="h6">README Preview</Typography>
+//         <Box>
+//           <Button
+//             variant="outlined"
+//             onClick={handleCopy}
+//             disabled={!markdown}
+//             sx={{ mr: 1 }}
+//           >
+//             Copy to Clipboard
+//           </Button>
+//           <Button
+//             variant="contained"
+//             startIcon={<DownloadIcon />}
+//             onClick={handleDownload}
+//             disabled={!markdown}
+//           >
+//             Download
+//           </Button>
+//         </Box>
+//       </Box>
+
+//       <Box
+//         className="markdown-body"
+//         sx={{
+//           p: 3,
+//           border: '1px solid',
+//           borderColor: 'divider',
+//           borderRadius: 1,
+//           minHeight: '60vh',
+//           overflow: 'auto',
+//         }}
+//       >
+//         {markdown ? (
+//           <ReactMarkdown>{markdown}</ReactMarkdown>
+//         ) : (
+//           <Typography
+//             color="text.secondary"
+//             sx={{ textAlign: 'center', mt: 4 }}
+//           >
+//             Enter a GitHub username to generate your profile README
+//           </Typography>
+//         )}
+//       </Box>
+//     </Paper>
+//   )
+// }
+import { useState } from 'react'
+import {
+  Box,
+  Button,
+  IconButton,
+  Paper,
+  Typography,
+  Alert,
+  CircularProgress,
+} from '@mui/material'
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DownloadIcon from '@mui/icons-material/Download'
+import ReactMarkdown from 'react-markdown'
+import { downloadReadme } from '../utils/api'
 
 export default function MarkdownPreview({ markdown, profileData }) {
-  const handleDownload = () => {
-    const blob = new Blob([markdown], { type: 'text/markdown' })
-    saveAs(blob, 'README.md')
+  const [copied, setCopied] = useState(false)
+  const [isDownloading, setIsDownloading] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(markdown)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy:', err)
+    }
   }
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(markdown)
+  const handleDownload = async () => {
+    if (!markdown) return
+
+    setIsDownloading(true)
+    try {
+      const response = await fetch(
+        'http://localhost:5000/api/github/download',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ markdown, profileData }),
+        }
+      )
+
+      if (!response.ok) throw new Error('Download failed')
+
+      const blob = await downloadReadme(markdown)
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'README.md'
+      document.body.appendChild(a)
+      a.click()
+      window.URL.revokeObjectURL(url)
+    } catch (err) {
+      console.error('Download error:', err)
+    } finally {
+      setIsDownloading(false)
+    }
   }
 
   return (
-    <Paper elevation={2} sx={{ p: 2 }}>
+    <Paper elevation={3} sx={{ p: 3, height: '100%' }}>
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center',
           mb: 2,
         }}
       >
         <Typography variant="h6">README Preview</Typography>
-
         <Box>
+          <IconButton onClick={handleCopy} disabled={!markdown}>
+            <ContentCopyIcon />
+          </IconButton>
           <Button
-            variant="outlined"
-            startIcon={<EditIcon />}
-            onClick={handleCopy}
-            disabled={!markdown}
-            sx={{ mr: 1 }}
-          >
-            Copy
-          </Button>
-          <Button
-            variant="contained"
             startIcon={<DownloadIcon />}
             onClick={handleDownload}
-            disabled={!markdown}
+            disabled={!markdown || isDownloading}
+            size="small"
           >
-            Download
+            {isDownloading ? <CircularProgress size={20} /> : 'Download'}
           </Button>
         </Box>
       </Box>
 
+      {copied && (
+        <Alert severity="success" sx={{ mb: 2 }}>
+          Copied to clipboard!
+        </Alert>
+      )}
+
       <Box
-        className="markdown-body"
         sx={{
-          p: 3,
-          border: '1px solid',
-          borderColor: 'divider',
+          border: '1px solid #ddd',
           borderRadius: 1,
-          minHeight: '60vh',
+          p: 2,
+          minHeight: '500px',
           overflow: 'auto',
         }}
       >
         {markdown ? (
           <ReactMarkdown>{markdown}</ReactMarkdown>
         ) : (
-          <Typography
-            color="text.secondary"
-            sx={{ textAlign: 'center', mt: 4 }}
-          >
-            Enter a GitHub username to generate a profile README
+          <Typography color="text.secondary">
+            Your README preview will appear here...
           </Typography>
         )}
       </Box>
