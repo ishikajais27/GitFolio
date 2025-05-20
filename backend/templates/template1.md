@@ -1,80 +1,38 @@
-<p align="center">
-  <img src="https://github.com/thompsonemerson/thompsonemerson/raw/master/cover-thompson.png" height="200"/>
-</p>
-<hr>
+<h1 align="center"><img align="center alt="Welcome" width="500" src="https://github.com/sindresorhus/sindresorhus/blob/main/welcome-header.gif?raw=true"></h1>
 <h1 align="center">Hi <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="30px">, I'm {{name}}</h1>
 <h3 align="center">{{headline}}</h3>
-<p align="center">
-{{socialLinks}}
-</p>
-
-<p align="center">
-  <em>
-    {{aboutMeIntro}} <br>
-    {{professionalDescription}}
-  </em> 
-  <br>
-  <img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="50" /> <b><i>{{tagline}}</i></b> <img src="https://media.giphy.com/media/7j2hfyeVcDtf2/giphy.gif" width="50" />
-</p>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username={{username}}&label=Profile%20views&color=0e75b6&style=flat" alt="{{username}}" /> </p>
-<img align="right" width=300px alt="Coding" src="https://media.giphy.com/media/3ohs4BSacFKI7A717y/giphy.gif" />
+<img align="right" alt="Coding" width="300" src="https://i.pinimg.com/originals/81/17/8b/81178b47a8598f0c81c4799f2cdd4057.gif">
 
-<img src="https://media.giphy.com/media/ObNTw8Uzwy6KQ/giphy.gif" width="30px">&nbsp;**_Talking about Personal Stuffs..._**
+### 🚀 About Me
 
-✔ I'm currently working on **{{currentWork}}**<br>
-✔ I'm currently learning **{{currentLearning}}**<br>
-✔ {{aboutMe}}**<br>
-✔ I'm looking to collaborate on **{{collaborationInterest}}**<br>
-✔ I'm looking for help with **{{helpInterest}}**<br>
-✔ Ask me about **{{expertiseTopics}}**<br>
-✔ Fun fact: **{{funFact}}\*\*<br><br><br><br>
+✔ I'm currently working on **{{currentWork}}**  
+✔ I'm currently learning **{{currentLearning}}**  
+✔ {{aboutMe}}  
+✔ I'm looking to collaborate on **{{collaborationInterest}}**  
+✔ I'm looking for help with **{{helpInterest}}**  
+✔ Ask me about **{{expertiseTopics}}**  
+✔ Fun fact: **{{funFact}}**
 
-### Tools:
+<h3>📊 GitHub Stats<img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="50"></h3>
+<img align="right" alt="Coding" width="300" src="https://cdn.dribbble.com/users/1277312/screenshots/14733298/media/39b1045e593737587dd60e42c8422d1f.gif">
 
-![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username={{username}}&show_icons=true&theme=dark&locale=en&layout=compact" alt="{{username}}" /></p>
 
-<hr>
+<br><br><br><br><br><br><br>
 
-## Here are some [🦜 parrots](https://cultofthepartyparrot.com):
+<p>&nbsp;<img align="left" src="https://github-readme-stats.vercel.app/api?username={{username}}&show_icons=true&theme=dark&locale=en" alt="{{username}}" /></p>
+<br><br><br><br><br><br><br><br><br><br>
 
-<div>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/githubparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/flags/hd/indiaparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/asyncparrot.gif" width="36" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/60fpsparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/jumpingparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/opensourceparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/dealwithitnowparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/hypnoparrotlight.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/databaseparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/fixparrot.gif" width="36" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/laptop_parrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/spinningparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/levitationparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/meldparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/slomoparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/moonwalkingparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/stableparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/scienceparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/pirateparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/footballparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/illuminatiparrot.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/hypnoparrotdark.gif" width="30" height="30"/>
-    <img src="https://cultofthepartyparrot.com/parrots/hd/mustacheparrot.gif" width="30" height="30"/>
-</div>
+<p><img align="left" src="https://github-readme-streak-stats.herokuapp.com/?user={{username}}&theme=dark" alt="{{username}}" /></p>
+<br><br><br><br><br><br><br><br><br><br>
 
 <hr>
 
-## <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="35"><b> Github Stats </b>
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username={{username}}&show_icons=true&theme=algolia" width="450"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username={{username}}&show_icons=true&theme=algolia&layout=compact" width="375"/>
-</div>
-
-## 🌐 Connect with me
-
+<h3 align="left">Connect with me:<img src="https://media0.giphy.com/media/jqNPzdTTxQfOgOqpO4/source.gif" width="50"></h3>
+<p align="left">
 {{socialLinks}}
+</p>
+
+<hr>
