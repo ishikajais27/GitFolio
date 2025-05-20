@@ -2,7 +2,7 @@
 
 📍 {{location}} | {{company}}
 
-{{bio}}
+{{aboutMe}}
 
 ## 🌐 Connect with me
 

@@ -83,14 +83,59 @@ exports.loadTemplates = () => {
   return templates
 }
 
+// exports.applyTemplateReplacements = (template, data) => {
+//   let result = template
+
+//   // Basic replacements
+//   result = result
+//     .replace(/\{\{username\}\}/g, data.username)
+//     .replace(/\{\{name\}\}/g, data.name)
+//     .replace(/\{\{bio\}\}/g, data.bio)
+//     .replace(/\{\{avatarUrl\}\}/g, data.avatarUrl)
+//     .replace(/\{\{location\}\}/g, data.location)
+//     .replace(/\{\{website\}\}/g, data.website)
+//     .replace(/\{\{company\}\}/g, data.company)
+//     .replace(/\{\{githubUrl\}\}/g, data.githubUrl)
+//     .replace(/\{\{followers\}\}/g, data.followers)
+//     .replace(/\{\{following\}\}/g, data.following)
+//     .replace(/\{\{publicRepos\}\}/g, data.publicRepos)
+
+//   // Social links
+//   if (data.socialLinks && data.socialLinks.length > 0) {
+//     const socialLinksMarkdown = data.socialLinks
+//       .map((link) => {
+//         return `[![${link.alt}](${link.icon})](${link.url})`
+//       })
+//       .join(' ')
+//     result = result.replace(/\{\{socialLinks\}\}/g, socialLinksMarkdown)
+//   } else {
+//     result = result.replace(/\{\{socialLinks\}\}/g, '')
+//   }
+
+//   // Top languages
+//   if (data.topLanguages && data.topLanguages.length > 0) {
+//     const languagesMarkdown = data.topLanguages
+//       .map((lang) => {
+//         return `![${lang}](https://img.shields.io/badge/-${encodeURIComponent(
+//           lang
+//         )}-informational?style=flat&logo=${encodeURIComponent(
+//           lang.toLowerCase()
+//         )}&logoColor=white)`
+//       })
+//       .join(' ')
+//     result = result.replace(/\{\{topLanguages\}\}/g, languagesMarkdown)
+//   } else {
+//     result = result.replace(/\{\{topLanguages\}\}/g, '')
+//   }
+
+//   return result
+// }
 exports.applyTemplateReplacements = (template, data) => {
   let result = template
-
-  // Basic replacements
-  result = result
     .replace(/\{\{username\}\}/g, data.username)
     .replace(/\{\{name\}\}/g, data.name)
     .replace(/\{\{bio\}\}/g, data.bio)
+    .replace(/\{\{aboutMe\}\}/g, data.aboutMe)
     .replace(/\{\{avatarUrl\}\}/g, data.avatarUrl)
     .replace(/\{\{location\}\}/g, data.location)
     .replace(/\{\{website\}\}/g, data.website)
@@ -100,32 +145,27 @@ exports.applyTemplateReplacements = (template, data) => {
     .replace(/\{\{following\}\}/g, data.following)
     .replace(/\{\{publicRepos\}\}/g, data.publicRepos)
 
-  // Social links
-  if (data.socialLinks && data.socialLinks.length > 0) {
-    const socialLinksMarkdown = data.socialLinks
-      .map((link) => {
-        return `[![${link.alt}](${link.icon})](${link.url})`
-      })
+  // Social links processing
+  if (data.socialLinks?.length > 0) {
+    const socialMarkdown = data.socialLinks
+      .map((link) => `[![${link.alt}](${link.icon})](${link.url})`)
       .join(' ')
-    result = result.replace(/\{\{socialLinks\}\}/g, socialLinksMarkdown)
-  } else {
-    result = result.replace(/\{\{socialLinks\}\}/g, '')
+    result = result.replace(/\{\{socialLinks\}\}/g, socialMarkdown)
   }
 
-  // Top languages
-  if (data.topLanguages && data.topLanguages.length > 0) {
-    const languagesMarkdown = data.topLanguages
-      .map((lang) => {
-        return `![${lang}](https://img.shields.io/badge/-${encodeURIComponent(
-          lang
-        )}-informational?style=flat&logo=${encodeURIComponent(
-          lang.toLowerCase()
-        )}&logoColor=white)`
-      })
+  // Top languages processing
+  if (data.topLanguages?.length > 0) {
+    const langsMarkdown = data.topLanguages
+      .map(
+        (lang) =>
+          `![${lang}](https://img.shields.io/badge/-${encodeURIComponent(
+            lang
+          )}-informational?style=flat&logo=${encodeURIComponent(
+            lang.toLowerCase()
+          )}&logoColor=white)`
+      )
       .join(' ')
-    result = result.replace(/\{\{topLanguages\}\}/g, languagesMarkdown)
-  } else {
-    result = result.replace(/\{\{topLanguages\}\}/g, '')
+    result = result.replace(/\{\{topLanguages\}\}/g, langsMarkdown)
   }
 
   return result
