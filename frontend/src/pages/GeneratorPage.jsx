@@ -1,25 +1,33 @@
 import { useState } from 'react'
-import { Container, Grid } from '@mui/material'
 import GitHubParser from '../components/GitHubParser'
 import MarkdownPreview from '../components/MarkdownPreview'
+import '../styles/GeneratorPage.css'
 
 export default function GeneratorPage() {
   const [markdown, setMarkdown] = useState('')
   const [profileData, setProfileData] = useState(null)
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={4}>
+    <div className="generator-page">
+      <div className="page-header">
+        <h1>GitHub Profile Generator</h1>
+        <p className="page-subtitle">
+          Create your perfect GitHub Profile ReadMe in the best possible way.
+          Lots of features and tools included, all for free!
+        </p>
+      </div>
+
+      <div className="generator-grid">
+        <div className="parser-column">
           <GitHubParser
             setMarkdown={setMarkdown}
             setProfileData={setProfileData}
           />
-        </Grid>
-        <Grid item xs={12} md={8}>
+        </div>
+        <div className="preview-column">
           <MarkdownPreview markdown={markdown} profileData={profileData} />
-        </Grid>
-      </Grid>
-    </Container>
+        </div>
+      </div>
+    </div>
   )
 }

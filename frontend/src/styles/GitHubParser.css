@@ -1,0 +1,205 @@
+.parser-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid #2a3a5a;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  height: 650px; /* Fixed height */
+  color: #e0e0e0;
+  overflow-y: auto; /* Internal scroll */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom scrollbar */
+.parser-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.parser-container::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.parser-container::-webkit-scrollbar-thumb {
+  background-color: #4fc3f7;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .parser-container {
+    padding: 1rem;
+    max-height: none; /* Full height on mobile */
+  }
+}
+
+.parser-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  color: #4fc3f7;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, #0f0f1a 0%, #0d1526 100%);
+  padding: 0.5rem 0;
+  z-index: 10;
+}
+
+/* Rest of your existing GithubParser.css remains the same */
+
+.stars-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.parser-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.parser-subtitle {
+  margin-bottom: 2rem;
+  color: #b0bec5;
+}
+
+.parser-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #b0bec5;
+  font-weight: 500;
+}
+
+.input-with-icon {
+  padding-right: 2rem; /* Extra space for emoji/stickers */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b0bec5;
+}
+
+input,
+select {
+  padding: 0.75rem 1rem;
+  padding-left: 2.5rem;
+  background-color: rgba(26, 26, 46, 0.7);
+  border: 1px solid #2a3a5a;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #4fc3f7;
+}
+
+.toggle-social-links {
+  background: none;
+  border: none;
+  color: #4fc3f7;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-links-container {
+  background-color: rgba(26, 26, 46, 0.5);
+  border: 1px solid #2a3a5a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: -0.5rem;
+}
+
+.social-links-container h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #4fc3f7;
+}
+
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.generate-button {
+  background: linear-gradient(135deg, #4fc3f7 0%, #1976d2 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background 0.3s;
+}
+
+.generate-button:hover {
+  background: linear-gradient(135deg, #1976d2 0%, #4fc3f7 100%);
+}
+
+.generate-button:disabled {
+  background: #2a3a5a;
+  color: #607d8b;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  background-color: rgba(139, 0, 0, 0.2);
+  border: 1px solid #8b0000;
+  padding: 1rem;
+  border-radius: 6px;
+  color: #ff6b6b;
+}
+
+.parser-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #2a3a5a;
+  text-align: center;
+  color: #b0bec5;
+  font-size: 0.9rem;
+}

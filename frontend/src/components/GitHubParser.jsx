@@ -1,21 +1,5 @@
 import { useState } from 'react'
-import {
-  TextField,
-  Button,
-  Box,
-  Alert,
-  CircularProgress,
-  Typography,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Grid,
-  IconButton,
-  Collapse,
-} from '@mui/material'
-import AddIcon from '@mui/icons-material/Add'
-import RemoveIcon from '@mui/icons-material/Remove'
+import '../styles/GitHubParser.css'
 
 const socialPlatforms = [
   { id: 'linkedin', label: 'LinkedIn', placeholder: 'username or profile URL' },
@@ -74,54 +58,61 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
   }
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          <TextField
-            label="GitHub Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            fullWidth
-            margin="normal"
-            placeholder="e.g. torvalds"
-            required
-          />
-        </Grid>
-        <Grid item xs={4}>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Template</InputLabel>
-            <Select
-              value={template}
-              onChange={(e) => setTemplate(e.target.value)}
-              label="Template"
-            >
-              <MenuItem value="template1">Professional</MenuItem>
-              <MenuItem value="template2">Creative</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-      </Grid>
+    <div className="parser-container">
+      <div className="parser-header">
+        <div className="stars-icon">⭐</div>
+        <h2>Best Profile Generator</h2>
+      </div>
+      <p className="parser-subtitle">
+        Create your perfect GitHub Profile ReadMe in the best possible way
+      </p>
 
-      <Box sx={{ mt: 2 }}>
-        <Button
-          variant="outlined"
-          startIcon={showSocialLinks ? <RemoveIcon /> : <AddIcon />}
+      <form onSubmit={handleSubmit} className="parser-form">
+        <div className="form-group">
+          <label htmlFor="username">GitHub Username</label>
+          <div className="input-with-icon">
+            <span className="input-icon">👤</span>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="e.g. torvalds"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="template">Template Style</label>
+          <select
+            id="template"
+            value={template}
+            onChange={(e) => setTemplate(e.target.value)}
+          >
+            <option value="template1">Professional</option>
+            <option value="template2">Creative</option>
+          </select>
+        </div>
+
+        <button
+          type="button"
+          className="toggle-social-links"
           onClick={() => setShowSocialLinks(!showSocialLinks)}
-          size="small"
         >
-          {showSocialLinks ? 'Hide Social Links' : 'Add Social Links'}
-        </Button>
+          {showSocialLinks ? '▼ Hide Social Links' : '▶ Add Social Links'}
+        </button>
 
-        <Collapse in={showSocialLinks}>
-          <Box sx={{ mt: 2, p: 2, border: '1px solid #ddd', borderRadius: 1 }}>
-            <Typography variant="subtitle2" gutterBottom>
-              Add your social media links (optional)
-            </Typography>
-            <Grid container spacing={2}>
+        {showSocialLinks && (
+          <div className="social-links-container">
+            <h4>Add your social media links (optional)</h4>
+            <div className="social-links-grid">
               {socialPlatforms.map((platform) => (
-                <Grid item xs={12} sm={6} key={platform.id}>
-                  <TextField
-                    label={platform.label}
+                <div className="form-group" key={platform.id}>
+                  <label htmlFor={platform.id}>{platform.label}</label>
+                  <input
+                    id={platform.id}
+                    type="text"
                     value={socialLinks[platform.id] || ''}
                     onChange={(e) =>
                       setSocialLinks((prev) => ({
@@ -129,33 +120,34 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
                         [platform.id]: e.target.value,
                       }))
                     }
-                    fullWidth
-                    size="small"
                     placeholder={platform.placeholder}
-                    InputLabelProps={{ shrink: true }}
                   />
-                </Grid>
+                </div>
               ))}
-            </Grid>
-          </Box>
-        </Collapse>
-      </Box>
+            </div>
+          </div>
+        )}
 
-      <Button
-        type="submit"
-        variant="contained"
-        disabled={!username || isLoading}
-        sx={{ mt: 2 }}
-        fullWidth
-      >
-        {isLoading ? <CircularProgress size={24} /> : 'Generate README'}
-      </Button>
+        <button
+          type="submit"
+          className="generate-button"
+          disabled={!username || isLoading}
+        >
+          {isLoading ? (
+            <span className="spinner"></span>
+          ) : (
+            <>
+              <span className="bolt-icon">⚡</span> Generate README
+            </>
+          )}
+        </button>
 
-      {error && (
-        <Alert severity="error" sx={{ mt: 2 }}>
-          {error}
-        </Alert>
-      )}
-    </Box>
+        {error && <div className="error-message">⚠️ {error}</div>}
+      </form>
+
+      <div className="parser-footer">
+        <p>Support us by sharing with your friends!</p>
+      </div>
+    </div>
   )
 }

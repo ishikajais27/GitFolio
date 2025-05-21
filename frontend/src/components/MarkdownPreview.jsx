@@ -1,17 +1,6 @@
 import { useState } from 'react'
-import {
-  Box,
-  Button,
-  IconButton,
-  Paper,
-  Typography,
-  Alert,
-  CircularProgress,
-} from '@mui/material'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import DownloadIcon from '@mui/icons-material/Download'
 import ReactMarkdown from 'react-markdown'
-import { downloadReadme } from '../utils/api'
+import '../styles/MarkdownPreview.css'
 
 export default function MarkdownPreview({ markdown, profileData }) {
   const [copied, setCopied] = useState(false)
@@ -43,7 +32,7 @@ export default function MarkdownPreview({ markdown, profileData }) {
 
       if (!response.ok) throw new Error('Download failed')
 
-      const blob = await downloadReadme(markdown)
+      const blob = new Blob([markdown], { type: 'text/markdown' })
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
@@ -59,53 +48,55 @@ export default function MarkdownPreview({ markdown, profileData }) {
   }
 
   return (
-    <Paper elevation={3} sx={{ p: 3, height: '100%' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          mb: 2,
-        }}
-      >
-        <Typography variant="h6">README Preview</Typography>
-        <Box>
-          <IconButton onClick={handleCopy} disabled={!markdown}>
-            <ContentCopyIcon />
-          </IconButton>
-          <Button
-            startIcon={<DownloadIcon />}
+    <div className="preview-container">
+      <div className="preview-header">
+        <div className="preview-title">
+          <div className="avatar">👁️</div>
+          <h3>README Preview</h3>
+        </div>
+        <div className="preview-actions">
+          <button
+            onClick={handleCopy}
+            disabled={!markdown}
+            className="icon-button"
+            title="Copy to clipboard"
+          >
+            ⎘
+          </button>
+          <button
             onClick={handleDownload}
             disabled={!markdown || isDownloading}
-            size="small"
+            className="download-button"
           >
-            {isDownloading ? <CircularProgress size={20} /> : 'Download'}
-          </Button>
-        </Box>
-      </Box>
+            {isDownloading ? (
+              <span className="small-spinner"></span>
+            ) : (
+              '↓ Download'
+            )}
+          </button>
+        </div>
+      </div>
 
-      {copied && (
-        <Alert severity="success" sx={{ mb: 2 }}>
-          Copied to clipboard!
-        </Alert>
-      )}
+      {copied && <div className="copied-message">✓ Copied to clipboard!</div>}
 
-      <Box
-        sx={{
-          border: '1px solid #ddd',
-          borderRadius: 1,
-          p: 2,
-          minHeight: '500px',
-          overflow: 'auto',
-        }}
-      >
+      <div className="markdown-content">
         {markdown ? (
           <ReactMarkdown>{markdown}</ReactMarkdown>
         ) : (
-          <Typography color="text.secondary">
-            Your README preview will appear here...
-          </Typography>
+          <div className="empty-state">
+            <div className="github-icon">🐙</div>
+            <h4>Your README Preview</h4>
+            <p>
+              Enter your GitHub username and generate your profile to see the
+              preview here.
+            </p>
+          </div>
         )}
-      </Box>
-    </Paper>
+      </div>
+
+      <div className="preview-footer">
+        <p>Made with ❤️ for developers</p>
+      </div>
+    </div>
   )
 }

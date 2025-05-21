@@ -1,0 +1,210 @@
+.preview-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid #2a3a5a;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  height: 650px; /* Same fixed height as parser */
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-content {
+  flex-grow: 1;
+  padding: 1.5rem;
+  overflow: auto;
+  background-color: rgba(26, 26, 46, 0.3);
+  border: 1px solid #2a3a5a;
+  margin: 1rem;
+  border-radius: 8px;
+  min-height: 0; /* Allows proper flex sizing */
+}
+
+.markdown-content * {
+  color: white !important; /* Force white color for all elements */
+}
+.markdown-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.markdown-content::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.markdown-content::-webkit-scrollbar-thumb {
+  background-color: #4fc3f7;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .markdown-content {
+    padding: 1rem;
+    margin: 0.5rem;
+    min-height: 300px;
+    max-height: none; /* Full height on mobile */
+  }
+}
+
+/* Rest of your existing MarkdownPreview.css remains the same */
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: rgba(15, 15, 30, 0.8);
+  border-bottom: 1px solid #1e2a45;
+}
+
+.preview-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+.avatar {
+  background-color: #4fc3f7;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: #b0bec5;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s;
+}
+
+.icon-button:hover {
+  color: #4fc3f7;
+}
+
+.icon-button:disabled {
+  color: #607d8b;
+  cursor: not-allowed;
+}
+
+.download-button {
+  background: none;
+  border: 1px solid #2a3a5a;
+  color: #b0bec5;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.download-button:hover {
+  color: #4fc3f7;
+  border-color: #4fc3f7;
+}
+
+.download-button:disabled {
+  color: #607d8b;
+  border-color: #2a3a5a;
+  cursor: not-allowed;
+}
+
+.small-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.copied-message {
+  background-color: rgba(46, 125, 50, 0.2);
+  border: 1px solid #2e7d32;
+  color: #a5d6a7;
+  padding: 0.5rem 1rem;
+  margin: 0 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.markdown-content pre {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.markdown-content code {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.markdown-content a {
+  color: #4fc3f7;
+  text-decoration: none;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  color: white;
+  border-bottom: 1px solid #2a3a5a;
+  padding-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #b0bec5;
+  text-align: center;
+  gap: 1rem;
+}
+
+.github-icon {
+  font-size: 4rem;
+  opacity: 0.5;
+}
+
+.preview-footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: rgba(15, 15, 30, 0.7);
+  border-top: 1px solid #1e2a45;
+  color: #b0bec5;
+  font-size: 0.9rem;
+}
