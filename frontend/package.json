@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.jsx",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
