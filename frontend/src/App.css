@@ -1,26 +1,24 @@
-/* Add this to your frontend/src/App.css or index.css */
+/* Reset overlapping/layout issues */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 body {
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-.app-container {
-  min-height: 100vh;
+/* Grid/Flex Container Fix */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem; /* Spacing between elements */
 }
