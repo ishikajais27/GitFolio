@@ -1,24 +1,38 @@
-/* Reset overlapping/layout issues */
-* {
+/* Reset and base styles */
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.5;
-  min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-/* Grid/Flex Container Fix */
-.container {
   width: 100%;
-  max-width: 1200px; /* Adjust as needed */
-  margin: 0 auto;
-  padding: 0 1rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.app {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Spacing between elements */
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Header styling - adjust as needed */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white; /* Or your preferred header color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+/* Main content area */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
