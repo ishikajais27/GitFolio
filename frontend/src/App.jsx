@@ -1,11 +1,3 @@
-// import GeneratorPage from './pages/GeneratorPage'
-
-// function App() {
-//   return <GeneratorPage />
-// }
-
-// export default App
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import GeneratorPage from './pages/GeneratorPage'
