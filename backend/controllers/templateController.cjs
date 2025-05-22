@@ -3,27 +3,6 @@ const {
   applyTemplateReplacements,
 } = require('../utils/templateUtils.cjs')
 
-// exports.getTemplates = (req, res) => {
-//   try {
-//     const templatesDir = path.join(__dirname, '../../templates')
-//     const files = fs.readdirSync(templatesDir)
-
-//     const templates = files
-//       .filter((file) => file.endsWith('.md'))
-//       .map((file) => ({
-//         id: file.replace('.md', ''),
-//         name: file
-//           .replace('.md', '')
-//           .replace(/([a-z])([A-Z])/g, '$1 $2')
-//           .replace(/-/g, ' '),
-//         previewUrl: `/templates/previews/${file.replace('.md', '.png')}`,
-//       }))
-
-//     res.json(templates)
-//   } catch (err) {
-//     res.status(500).json({ error: 'Unable to read templates' })
-//   }
-// }
 exports.getTemplates = (req, res) => {
   try {
     const templatesDir = path.join(__dirname, '../../templates')
