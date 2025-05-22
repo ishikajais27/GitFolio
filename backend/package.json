@@ -23,6 +23,8 @@
     "mongoose": "^8.14.2",
     "path": "^0.12.7",
     "pdf-parse": "^1.1.1",
-    "puppeteer": "^24.8.2"
+    "puppeteer": "^24.8.2",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   }
 }

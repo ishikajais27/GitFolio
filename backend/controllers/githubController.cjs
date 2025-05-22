@@ -121,7 +121,7 @@ exports.generateProfile = async (req, res) => {
     let profile = await Profile.findOne({ username, template })
 
     // Add version tracking to invalidate old cached profiles
-    const currentTemplateVersion = 2 // Increment this when you make template changes
+    const currentTemplateVersion = 4 // Increment this when you make template changes
 
     if (
       !profile ||
@@ -185,64 +185,6 @@ exports.generateProfile = async (req, res) => {
     })
   }
 }
-
-// exports.generateProfile = async (req, res) => {
-//   try {
-//     const { username, template = 'template1', socialLinks = {} } = req.body
-
-//     if (!username) {
-//       return res.status(400).json({ error: 'GitHub username is required' })
-//     }
-
-//     // Check cache first
-//     let profile = await Profile.findOne({ username, template })
-
-//     if (!profile) {
-//       // Fetch fresh data
-//       const profileData = await this.fetchGitHubData(username)
-
-//       // Process social links
-//       const processedSocialLinks = Object.entries(socialLinks)
-//         .filter(([_, url]) => url?.trim())
-//         .map(([platform, url]) => ({
-//           platform,
-//           url: formatSocialUrl(platform, url),
-//           icon: getSocialIcon(platform),
-//           alt: `${platform} logo`,
-//         }))
-
-//       // Load and apply template
-//       const templates = loadTemplates()
-//       if (!templates[template]) {
-//         return res.status(400).json({ error: 'Template not found' })
-//       }
-
-//       const markdown = applyTemplateReplacements(templates[template], {
-//         ...profileData,
-//         socialLinks: processedSocialLinks,
-//       })
-
-//       // Save to database
-//       profile = new Profile({
-//         ...profileData,
-//         markdownContent: markdown,
-//         template,
-//         socialLinks: processedSocialLinks,
-//         lastUpdated: new Date(),
-//       })
-
-//       await profile.save()
-//     }
-
-//     res.json(profile)
-//   } catch (error) {
-//     console.error('Error generating profile:', error)
-//     res.status(500).json({
-//       error: error.message || 'Failed to generate profile',
-//       suggestion: 'Please check the username and try again',
-//     })
-//   }
-// }
 
 exports.downloadProfile = async (req, res) => {
   try {
