@@ -1,0 +1,121 @@
+.template-preview {
+  background: linear-gradient(150deg, #0a0f1d 0%, #121a2b 70%, #0f0c2a 100%);
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  color: #e2e8f0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.template-preview h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #c084fc, #818cf8, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.template-preview p {
+  text-align: center;
+  color: #94a3b8;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.template-card {
+  background: linear-gradient(
+    145deg,
+    rgba(20, 30, 50, 0.8),
+    rgba(10, 15, 25, 0.9)
+  );
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.template-card h3 {
+  color: #a5b4fc;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.template-image-container {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.template-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.template-card:hover .template-image {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .template-preview {
+    padding: 3rem 1.5rem;
+  }
+
+  .template-preview h1 {
+    font-size: 2rem;
+  }
+
+  .template-preview p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .template-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .template-preview {
+    padding: 2rem 1rem;
+  }
+
+  .template-preview h1 {
+    font-size: 1.75rem;
+  }
+
+  .template-preview p {
+    font-size: 0.95rem;
+  }
+
+  .template-card {
+    padding: 1rem;
+  }
+}
