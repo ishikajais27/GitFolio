@@ -1,5 +1,8 @@
+'use client'
+
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { FaEye, FaCopy, FaDownload, FaGithub, FaCheck } from 'react-icons/fa'
 import '../styles/MarkdownPreview.css'
 
 export default function MarkdownPreview({ markdown, profileData }) {
@@ -51,7 +54,9 @@ export default function MarkdownPreview({ markdown, profileData }) {
     <div className="preview-container">
       <div className="preview-header">
         <div className="preview-title">
-          <div className="avatar">👁️</div>
+          <div className="avatar">
+            <FaEye />
+          </div>
           <h3>README Preview</h3>
         </div>
         <div className="preview-actions">
@@ -60,31 +65,41 @@ export default function MarkdownPreview({ markdown, profileData }) {
             disabled={!markdown}
             className="icon-button"
             title="Copy to clipboard"
+            aria-label="Copy to clipboard"
           >
-            ⎘
+            <FaCopy />
           </button>
           <button
             onClick={handleDownload}
             disabled={!markdown || isDownloading}
             className="download-button"
+            aria-label="Download README"
           >
             {isDownloading ? (
               <span className="small-spinner"></span>
             ) : (
-              '↓ Download'
+              <>
+                <FaDownload className="download-icon" /> Download
+              </>
             )}
           </button>
         </div>
       </div>
 
-      {copied && <div className="copied-message">✓ Copied to clipboard!</div>}
+      {copied && (
+        <div className="copied-message">
+          <FaCheck className="check-icon" /> Copied to clipboard!
+        </div>
+      )}
 
       <div className="markdown-content">
         {markdown ? (
           <ReactMarkdown>{markdown}</ReactMarkdown>
         ) : (
           <div className="empty-state">
-            <div className="github-icon">🐙</div>
+            <div className="github-icon">
+              <FaGithub />
+            </div>
             <h4>Your README Preview</h4>
             <p>
               Enter your GitHub username and generate your profile to see the
@@ -95,7 +110,9 @@ export default function MarkdownPreview({ markdown, profileData }) {
       </div>
 
       <div className="preview-footer">
-        <p>Made with ❤️ for developers</p>
+        <p>
+          Made with <span className="heart-pulse">❤️</span> for developers
+        </p>
       </div>
     </div>
   )

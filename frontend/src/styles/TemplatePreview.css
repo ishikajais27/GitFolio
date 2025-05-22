@@ -1,37 +1,101 @@
+/* Enhanced TemplatePreview.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 .template-preview {
-  background: linear-gradient(150deg, #0a0f1d 0%, #121a2b 70%, #0f0c2a 100%);
+  background: linear-gradient(135deg, #0a0f1d 0%, #121a2b 50%, #0f0c2a 100%);
   min-height: 100vh;
   padding: 4rem 2rem;
   color: #e2e8f0;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Add subtle animated background pattern */
+.template-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(99, 102, 241, 0.07) 1%,
+      transparent 12%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(139, 92, 246, 0.07) 1%,
+      transparent 12%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(56, 189, 248, 0.05) 1%,
+      transparent 10%
+    );
+  background-size: 60px 60px, 60px 60px, 80px 80px;
+  background-position: 0 0, 0 0, 0 0;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatingBg 180s infinite linear;
+}
+
+@keyframes floatingBg {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 60px 60px, -60px -60px, 80px 80px;
+  }
 }
 
 .template-preview h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   background: linear-gradient(to right, #c084fc, #818cf8, #38bdf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.template-preview h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #c084fc, #818cf8);
+  border-radius: 4px;
 }
 
 .template-preview p {
   text-align: center;
   color: #94a3b8;
   max-width: 700px;
-  margin: 0 auto 3rem;
-  font-size: 1.1rem;
+  margin: 1.5rem auto 3.5rem;
+  font-size: 1.2rem;
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
 
 .template-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .template-card {
@@ -41,24 +105,46 @@
     rgba(10, 15, 25, 0.9)
   );
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.template-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #c084fc, #818cf8);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 
 .template-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   border-color: rgba(139, 92, 246, 0.2);
+}
+
+.template-card:hover::before {
+  transform: scaleX(1);
 }
 
 .template-card h3 {
   color: #a5b4fc;
   text-align: center;
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .template-image-container {
@@ -66,6 +152,8 @@
   overflow: hidden;
   position: relative;
   padding-top: 56.25%; /* 16:9 aspect ratio */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .template-image {
@@ -75,11 +163,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
+  filter: brightness(0.95);
 }
 
 .template-card:hover .template-image {
-  transform: scale(1.02);
+  transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
 @media (max-width: 768px) {
@@ -88,17 +178,18 @@
   }
 
   .template-preview h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .template-preview p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 0 1rem;
   }
 
   .template-grid {
     grid-template-columns: 1fr;
     max-width: 600px;
+    gap: 2rem;
   }
 }
 
@@ -111,11 +202,374 @@
     font-size: 1.75rem;
   }
 
+  .template-preview h1::after {
+    width: 70px;
+    height: 3px;
+  }
+
   .template-preview p {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .template-card {
-    padding: 1rem;
+    padding: 1.25rem;
+  }
+}
+
+/* Enhanced Image Modal Styles */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: modalContentScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalContentScale {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-button {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  color: #a5b4fc;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-button:hover {
+  color: #818cf8;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .modal-image {
+    max-height: 70vh;
+  }
+
+  .close-button {
+    top: -40px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-image {
+    max-height: 60vh;
+  }
+
+  .close-button {
+    top: -35px;
+    font-size: 1.75rem;
+  }
+}
+
+/* Additional CSS for TemplatePreview.jsx - Add these to your TemplatePreview.css file */
+
+/* Animated particles */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.1);
+  pointer-events: none;
+}
+
+.particle:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  width: 100px;
+  height: 100px;
+  animation: float 20s infinite ease-in-out;
+}
+
+.particle:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  width: 150px;
+  height: 150px;
+  animation: float 25s infinite ease-in-out reverse;
+}
+
+.particle:nth-child(3) {
+  top: 80%;
+  left: 30%;
+  width: 80px;
+  height: 80px;
+  animation: float 22s infinite ease-in-out 2s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-30px, 30px);
+  }
+  50% {
+    transform: translate(30px, 60px);
+  }
+  75% {
+    transform: translate(60px, -30px);
+  }
+}
+
+.template-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header-divider {
+  position: relative;
+  height: 2px;
+  width: 120px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 92, 246, 0.7),
+    transparent
+  );
+  margin: 1rem auto 2rem;
+}
+
+.divider-gem {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #c084fc, #818cf8);
+  transform: rotate(45deg);
+  top: -9px;
+  left: calc(50% - 10px);
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+/* Animate cards in */
+.template-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.template-grid.animate-in .template-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s forwards ease-out;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.template-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.template-description {
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.template-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  flex-grow: 1;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.template-image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.preview-button {
+  background: linear-gradient(135deg, #c084fc, #818cf8);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+}
+
+.template-image-container:hover .preview-button {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.preview-button:hover {
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(139, 92, 246, 0.4);
+}
+
+/* Enhanced modal */
+.image-modal {
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: modalContentScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalContentScale {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-image-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-button {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: rgba(15, 23, 42, 0.7);
+  color: #a5b4fc;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-button:hover {
+  color: white;
+  background: rgba(139, 92, 246, 0.7);
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .template-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
