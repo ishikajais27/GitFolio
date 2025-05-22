@@ -85,6 +85,7 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
 
         <div className="form-group">
           <label htmlFor="template">Template Style</label>
+
           <select
             id="template"
             value={template}
@@ -92,16 +93,20 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
           >
             <option value="template1">Professional</option>
             <option value="template2">Creative</option>
+            <option value="template3">Minimalist</option>{' '}
+            {/* New template option */}
+            <option value="template4">Detailed</option>{' '}
+            {/* New template option */}
           </select>
         </div>
 
-        <button
+        <buttonx
           type="button"
           className="toggle-social-links"
           onClick={() => setShowSocialLinks(!showSocialLinks)}
         >
           {showSocialLinks ? '▼ Hide Social Links' : '▶ Add Social Links'}
-        </button>
+        </buttonx>
 
         {showSocialLinks && (
           <div className="social-links-container">
