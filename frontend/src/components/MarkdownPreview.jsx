@@ -57,7 +57,7 @@ export default function MarkdownPreview({ markdown, profileData }) {
           <div className="avatar">
             <FaEye />
           </div>
-          <h3>README Preview</h3>
+          <h3>README Code</h3>
         </div>
         <div className="preview-actions">
           <button
