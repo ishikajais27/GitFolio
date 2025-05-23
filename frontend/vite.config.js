@@ -10,8 +10,18 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../dist', // Changed from './dist'
+    outDir: '../dist',
     emptyOutDir: true,
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
   },
-  base: '/', // Changed from './'
+  base: '/',
+  server: {
+    port: 3000,
+  },
 })
