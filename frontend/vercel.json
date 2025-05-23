@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
+      "src": "frontendpackage.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
