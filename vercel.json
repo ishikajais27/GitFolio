@@ -2,23 +2,38 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
+      "src": "frontend/vite.config.js",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist",
-        "installCommand": "npm install --legacy-peer-deps",
-        "buildCommand": "npm run vercel-build"
+        "buildCommand": "npm run build"
+      }
+    },
+
+    {
+      "src": "backend/server.cjs",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "backend/config/**",
+          "backend/controllers/**",
+          "backend/routes/**",
+          "backend/models/**",
+          "backend/templates/**",
+          "backend/utils/**"
+        ]
       }
     }
   ],
   "routes": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/dist/assets/$1"
+      "src": "/api/(.*)",
+      "dest": "backend/server.cjs"
     },
+
     {
       "src": "/(.*)",
-      "dest": "/dist/index.html"
+      "dest": "frontend/dist/$1"
     }
   ]
 }

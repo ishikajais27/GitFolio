@@ -2,7 +2,6 @@ const express = require('express')
 const cors = require('cors')
 const connectDB = require('./config/db.cjs')
 const apiRouter = require('./routes/api.cjs')
-
 const app = express()
 
 // Middleware
@@ -42,3 +41,5 @@ process.on('unhandledRejection', (err) => {
   // Optionally exit the process
   // process.exit(1)
 })
+
+module.exports = app
