@@ -10,10 +10,10 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../dist',
+    outDir: './dist', // Changed from '../dist' to './dist'
     emptyOutDir: true,
+    assetsDir: 'assets',
     rollupOptions: {
-      input: path.resolve(__dirname, 'index.html'),
       output: {
         assetFileNames: 'assets/[name]-[hash][extname]',
         entryFileNames: 'assets/[name]-[hash].js',
@@ -23,6 +23,5 @@ export default defineConfig({
   base: '/',
   server: {
     port: 3000,
-    open: true,
   },
 })

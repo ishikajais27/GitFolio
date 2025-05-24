@@ -1,10 +1,10 @@
-/* Enhanced AboutPage.css */
+/* Enhanced AboutPage.css with improved mobile styling */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 .about-page {
   background: linear-gradient(135deg, #0a0f1d 0%, #121a2b 50%, #0f0c2a 100%);
   min-height: 100vh;
-  padding: 4rem 2rem;
+  padding: 3rem 1.5rem;
   color: #e2e8f0;
   font-family: 'Plus Jakarta Sans', sans-serif;
   position: relative;
@@ -47,9 +47,9 @@
 
 .about-page h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   background: linear-gradient(to right, #c084fc, #818cf8, #38bdf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -62,10 +62,10 @@
 .about-page h1::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 70px;
   height: 3px;
   background: linear-gradient(to right, #c084fc, #818cf8);
   border-radius: 3px;
@@ -75,10 +75,10 @@
   max-width: 800px;
   margin: 0 auto;
   background: rgba(15, 23, 42, 0.6);
-  border-radius: 16px;
-  padding: 2.5rem;
+  border-radius: 12px;
+  padding: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 1;
@@ -86,28 +86,28 @@
 }
 
 .about-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .about-content p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
   color: #cbd5e1;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
 }
 
 .feature-card {
   background: rgba(30, 41, 59, 0.6);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 10px;
+  padding: 1.25rem;
   border: 1px solid rgba(139, 92, 246, 0.1);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
@@ -128,8 +128,8 @@
 }
 
 .feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
   border-color: rgba(139, 92, 246, 0.3);
 }
 
@@ -142,8 +142,8 @@
   margin-top: 0;
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
 }
 
 .feature-card p {
@@ -154,8 +154,8 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -174,7 +174,7 @@
 
 @media (max-width: 768px) {
   .about-page {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.25rem;
   }
 
   .about-content {
@@ -182,21 +182,62 @@
   }
 
   .about-page h1 {
-    font-size: 2.25rem;
+    font-size: 2rem;
+  }
+
+  .feature-card {
+    padding: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
   .about-page {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .about-page h1 {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-page h1::after {
+    width: 40px;
+    height: 2px;
+    bottom: -6px;
+  }
+
+  .about-content {
+    padding: 1.1rem;
+    border-radius: 8px;
+    margin: 0 0.5rem;
   }
 
   .about-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .features-grid {
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 0.9rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-card h3 {
     font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-card p {
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 }
 
@@ -223,40 +264,40 @@
 .particle:nth-child(1) {
   top: 20%;
   left: 10%;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   animation: float 15s infinite ease-in-out;
 }
 
 .particle:nth-child(2) {
   top: 60%;
   left: 80%;
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   animation: float 20s infinite ease-in-out reverse;
 }
 
 .particle:nth-child(3) {
   top: 80%;
   left: 30%;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   animation: float 18s infinite ease-in-out 2s;
 }
 
 .particle:nth-child(4) {
   top: 10%;
   left: 70%;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   animation: float 22s infinite ease-in-out 1s;
 }
 
 .particle:nth-child(5) {
   top: 50%;
   left: 50%;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   animation: float 25s infinite ease-in-out 3s;
 }
 
@@ -280,32 +321,32 @@
   position: relative;
   z-index: 1;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .divider {
   position: relative;
   height: 2px;
-  width: 120px;
+  width: 100px;
   background: linear-gradient(
     90deg,
     transparent,
     rgba(139, 92, 246, 0.7),
     transparent
   );
-  margin: 1rem auto 2rem;
+  margin: 1rem auto 1.5rem;
 }
 
 .divider-gem {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background: linear-gradient(135deg, #c084fc, #818cf8);
   transform: rotate(45deg);
-  top: -9px;
-  left: calc(50% - 10px);
+  top: -7px;
+  left: calc(50% - 8px);
   border-radius: 2px;
-  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
 }
 
 .highlight {
@@ -334,19 +375,19 @@
 .creator-card {
   position: relative;
   background: rgba(15, 23, 42, 0.6);
-  border-radius: 16px;
-  padding: 2.5rem;
-  margin-bottom: 2.5rem;
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .creator-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .card-glow {
@@ -371,9 +412,9 @@
 
 .avatar-container {
   position: relative;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 2rem;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
 }
 
 .avatar-circle {
@@ -384,23 +425,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
-  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
   position: relative;
   z-index: 2;
-  border: 3px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .avatar-shadow {
   position: absolute;
-  bottom: -5px;
+  bottom: -4px;
   left: 10%;
   width: 80%;
-  height: 20px;
+  height: 16px;
   background: rgba(0, 0, 0, 0.2);
-  filter: blur(10px);
+  filter: blur(8px);
   border-radius: 50%;
   z-index: 1;
 }
@@ -408,9 +449,9 @@
 .animated-title {
   position: relative;
   display: inline-block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   font-family: 'Outfit', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: white;
   text-align: center;
@@ -420,25 +461,25 @@
 .animated-title::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 50px;
   height: 3px;
   background: linear-gradient(to right, #c084fc, #818cf8);
   border-radius: 3px;
 }
 
 .creator-intro {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
 .mission-section,
 .connect-section {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
 .mission-section h3,
@@ -446,7 +487,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
   color: #a5b4fc;
   font-family: 'Outfit', sans-serif;
@@ -467,15 +508,15 @@
 
 .connect-title {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .social-link {
@@ -485,26 +526,26 @@
   text-decoration: none;
   color: #cbd5e1;
   transition: all 0.3s ease;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .social-icon-container {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(30, 41, 59, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .social-link:hover {
   color: #a5b4fc;
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 .social-link:hover .social-icon-container {
@@ -513,15 +554,15 @@
     rgba(139, 92, 246, 0.2),
     rgba(99, 102, 241, 0.2)
   );
-  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
 }
 
 .project-mission {
   background: rgba(15, 23, 42, 0.6);
-  border-radius: 16px;
-  padding: 2.5rem;
+  border-radius: 12px;
+  padding: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -529,14 +570,14 @@
 }
 
 .project-mission:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .mission-title {
   text-align: center;
   font-family: 'Outfit', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: white;
   margin-bottom: 1rem;
@@ -544,16 +585,16 @@
 
 .mission-underline {
   height: 3px;
-  width: 80px;
+  width: 70px;
   background: linear-gradient(to right, #c084fc, #818cf8);
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem;
   border-radius: 3px;
 }
 
 .mission-intro {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
@@ -561,14 +602,14 @@
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
 }
 
 .mission-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.75rem;
   transition: transform 0.3s ease;
 }
 
@@ -577,22 +618,22 @@
 }
 
 .mission-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: rgba(30, 41, 59, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   flex-shrink: 0;
   color: #a5b4fc;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .mission-text {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
@@ -612,5 +653,114 @@
   .creator-card,
   .project-mission {
     padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .avatar-container {
+    width: 70px;
+    height: 70px;
+  }
+
+  .animated-title {
+    font-size: 1.4rem;
+  }
+
+  .creator-intro {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .creator-card,
+  .project-mission {
+    padding: 1.1rem;
+    border-radius: 8px;
+    margin: 0 0.5rem 1.5rem;
+  }
+
+  .avatar-container {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+
+  .avatar-circle {
+    font-size: 1.3rem;
+  }
+
+  .animated-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .animated-title::after {
+    width: 40px;
+    height: 2px;
+    bottom: -5px;
+  }
+
+  .creator-intro {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .mission-section h3,
+  .connect-section h3 {
+    font-size: 1.1rem;
+    gap: 0.5rem;
+  }
+
+  .social-icon-container {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .mission-points {
+    gap: 0.75rem;
+  }
+
+  .mission-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .mission-text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .mission-title {
+    font-size: 1.2rem;
+  }
+
+  .mission-underline {
+    width: 40px;
+    height: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .mission-intro {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    width: 60px;
+    margin: 0.75rem auto 1rem;
+  }
+
+  .divider-gem {
+    width: 12px;
+    height: 12px;
+    top: -5px;
+    left: calc(50% - 6px);
+  }
+
+  .social-links {
+    gap: 0.75rem;
   }
 }
