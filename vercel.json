@@ -2,14 +2,13 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/vite.config.js",
+      "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
-        "buildCommand": "npm run build"
+        "distDir": "frontend/dist",
+        "buildCommand": "npm install && npm run build"
       }
     },
-
     {
       "src": "backend/server.cjs",
       "use": "@vercel/node",
@@ -30,7 +29,6 @@
       "src": "/api/(.*)",
       "dest": "backend/server.cjs"
     },
-
     {
       "src": "/(.*)",
       "dest": "frontend/dist/$1"
