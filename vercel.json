@@ -11,7 +11,10 @@
     },
     {
       "src": "backend/server.cjs",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "installCommand": "cd backend && npm install"
+      }
     }
   ],
   "routes": [
