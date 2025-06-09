@@ -9,7 +9,7 @@
       }
     },
     {
-      "src": "backend/server.cjs",
+      "src": "backend/vercel.js",
       "use": "@vercel/node",
       "config": {
         "installCommand": "cd backend && npm install && node server.cjs"
