@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.jsx",
   "scripts": {
+    "preinstall": "chmod -R 755 node_modules 2>/dev/null || true",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

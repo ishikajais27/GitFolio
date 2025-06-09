@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "frontend/package.json",
@@ -15,23 +14,6 @@
       "config": {
         "installCommand": "cd backend && npm install"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/server.cjs"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/dist/$1",
-      "headers": {
-        "Cache-Control": "s-maxage=0"
-      }
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "frontend/dist/static/$1"
     }
   ]
 }
