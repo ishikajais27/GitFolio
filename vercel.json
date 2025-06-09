@@ -1,33 +1,19 @@
 {
-  "version": 2,
   "builds": [
-    {
-      "src": "backend/vercel.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["backend/**/*"]
-      }
-    },
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "frontend/dist",
+        "buildCommand": "cd frontend && npm install && npm run build"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api(.*)",
-      "dest": "/backend/server.cjs"
     },
     {
-      "src": "/health",
-      "dest": "/backend/server.cjs"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/$1"
+      "src": "backend/server.cjs",
+      "use": "@vercel/node",
+      "config": {
+        "installCommand": "cd backend && npm install && node server.cjs"
+      }
     }
   ]
 }
