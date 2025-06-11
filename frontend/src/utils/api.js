@@ -60,7 +60,7 @@
 //   }
 // }
 // Use relative path for production
-const API_BASE = window.location.origin
+const API_BASE = ''
 
 export const fetchGitHubProfile = async (
   username,
