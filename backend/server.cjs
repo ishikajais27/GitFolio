@@ -52,19 +52,20 @@ const apiRouter = require('./routes/api.cjs')
 const app = express()
 
 // Middleware
-app.use(cors())
+app.use(
+  cors({
+    origin: [
+      'https://gitfolio.vercel.app', // Your Vercel frontend URL
+      'http://localhost:3000', // Local development
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  })
+)
 app.use(express.json())
 
-// Database connection - handle serverless connection
-app.use(async (req, res, next) => {
-  try {
-    await connectDB()
-    next()
-  } catch (err) {
-    console.error('Database connection failed:', err)
-    res.status(500).json({ error: 'Database connection failed' })
-  }
-})
+// Database connection
+connectDB()
 
 // Routes
 app.use('/api', apiRouter)
@@ -86,4 +87,5 @@ app.use((err, req, res, next) => {
   })
 })
 
+// Export for Vercel
 module.exports = app
