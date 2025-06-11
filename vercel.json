@@ -9,14 +9,14 @@
       }
     },
     {
-      "src": "backend/server.cjs",
+      "src": "api/server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/server.cjs"
+      "dest": "/api/server.js"
     },
     {
       "src": "/(.*)",

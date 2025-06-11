@@ -37,3 +37,4 @@ coverage/
 # Vercel/Netlify
 .vercel/
 .netlify
+.vercel
