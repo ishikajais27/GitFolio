@@ -3,11 +3,8 @@ const mongoose = require('mongoose')
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      process.env.MONGODB_URI || 'mongodb://localhost:27017/gitfolio',
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
+      'mongodb://localhost:27017/gitfolio'
+      // Remove deprecated options
     )
     console.log('MongoDB Connected...')
   } catch (err) {

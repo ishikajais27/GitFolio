@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: gitfolio-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.cjs
+    env: node
+    envVars:
+      - key: MONGODB_URI
+        value: your_mongodb_connection_string
+      - key: PORT
+        value: 5000
