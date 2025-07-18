@@ -102,6 +102,14 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
       const data = await response.json()
 
       if (!response.ok) {
+        // Enhanced error message for rate limits
+        if (data.error?.includes('rate limit')) {
+          throw new Error(
+            `GitHub API rate limit exceeded. ${
+              data.suggestion || 'Try again in 1 hour.'
+            }`
+          )
+        }
         throw new Error(data.error || 'Failed to fetch profile')
       }
 
