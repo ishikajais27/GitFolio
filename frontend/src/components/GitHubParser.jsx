@@ -85,19 +85,22 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
     setError(null)
 
     try {
-      const response = await fetch('http://localhost:5000/api/github', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username,
-          template,
-          socialLinks: Object.fromEntries(
-            Object.entries(socialLinks).filter(
-              ([_, value]) => value && value.trim() !== ''
-            )
-          ),
-        }),
-      })
+      const response = await fetch(
+        'https://gitfolio-backend.onrender.com/api/github',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username,
+            template,
+            socialLinks: Object.fromEntries(
+              Object.entries(socialLinks).filter(
+                ([_, value]) => value && value.trim() !== ''
+              )
+            ),
+          }),
+        }
+      )
 
       const data = await response.json()
 
