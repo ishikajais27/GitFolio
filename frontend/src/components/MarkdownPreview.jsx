@@ -25,7 +25,7 @@ export default function MarkdownPreview({ markdown, profileData }) {
     setIsDownloading(true)
     try {
       const response = await fetch(
-        'http://localhost:5000/api/github/download',
+        'https://gitfolio-backend.onrender.com/api/github/download',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

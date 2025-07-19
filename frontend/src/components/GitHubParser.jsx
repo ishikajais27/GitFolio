@@ -89,7 +89,10 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
         'https://gitfolio-backend.onrender.com/api/github',
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
           body: JSON.stringify({
             username,
             template,
@@ -102,28 +105,77 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
         }
       )
 
-      const data = await response.json()
-
       if (!response.ok) {
-        // Enhanced error message for rate limits
-        if (data.error?.includes('rate limit')) {
+        const errorData = await response.json()
+        if (errorData.error?.includes('rate limit')) {
           throw new Error(
             `GitHub API rate limit exceeded. ${
-              data.suggestion || 'Try again in 1 hour.'
+              errorData.suggestion || 'Try again in 1 hour.'
             }`
           )
         }
-        throw new Error(data.error || 'Failed to fetch profile')
+        throw new Error(errorData.error || 'Failed to fetch profile')
       }
 
+      const data = await response.json()
       setProfileData(data)
       setMarkdown(data.markdownContent)
     } catch (err) {
-      setError(err.message)
+      setError(
+        err.message ||
+          'Failed to connect to the server. Please try again later.'
+      )
     } finally {
       setIsLoading(false)
     }
   }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   if (!username) return
+
+  //   setIsLoading(true)
+  //   setError(null)
+
+  //   try {
+  //     const response = await fetch(
+  //       'https://gitfolio-backend.onrender.com/api/github',
+  //       {
+  //         method: 'POST',
+  //         headers: { 'Content-Type': 'application/json' },
+  //         body: JSON.stringify({
+  //           username,
+  //           template,
+  //           socialLinks: Object.fromEntries(
+  //             Object.entries(socialLinks).filter(
+  //               ([_, value]) => value && value.trim() !== ''
+  //             )
+  //           ),
+  //         }),
+  //       }
+  //     )
+
+  //     const data = await response.json()
+
+  //     if (!response.ok) {
+  //       // Enhanced error message for rate limits
+  //       if (data.error?.includes('rate limit')) {
+  //         throw new Error(
+  //           `GitHub API rate limit exceeded. ${
+  //             data.suggestion || 'Try again in 1 hour.'
+  //           }`
+  //         )
+  //       }
+  //       throw new Error(data.error || 'Failed to fetch profile')
+  //     }
+
+  //     setProfileData(data)
+  //     setMarkdown(data.markdownContent)
+  //   } catch (err) {
+  //     setError(err.message)
+  //   } finally {
+  //     setIsLoading(false)
+  //   }
+  // }
 
   return (
     <div className="parser-container">
