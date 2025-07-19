@@ -72,7 +72,12 @@ export const fetchGitHubProfile = async (
   try {
     const response = await fetch(`${API_BASE}/api/github`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      mode: 'cors', // Explicitly enable CORS mode
+      credentials: 'include', // Include credentials if needed
       body: JSON.stringify({
         username,
         template,
