@@ -1,4 +1,4 @@
-/* Enhanced Header.css */
+/* Enhanced Header.css with improved animations */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 .app-header {
@@ -10,6 +10,18 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   border-bottom: 1px solid rgba(42, 58, 90, 0.5);
   transition: all 0.3s ease;
+  animation: slideInDown 0.6s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .app-header::after {
@@ -25,97 +37,18 @@
     rgba(79, 195, 247, 0.3),
     transparent
   );
+  animation: shimmer 3s infinite;
 }
 
-.header-nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 2.5rem;
-  justify-content: center;
-}
-
-.header-nav a {
-  color: #b0bec5;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.05rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  transition: all 0.3s ease;
-  padding: 0.5rem 0;
-  position: relative;
-  display: inline-block;
-  letter-spacing: 0.5px;
-}
-
-.header-nav a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #4fc3f7, #1976d2);
-  transition: width 0.3s ease;
-  border-radius: 2px;
-}
-
-.header-nav a:hover {
-  color: #4fc3f7;
-  transform: translateY(-2px);
-}
-
-.header-nav a:hover::before {
-  width: 100%;
-}
-
-.header-nav .active a {
-  color: #4fc3f7;
-  font-weight: 600;
-}
-
-.header-nav .active a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #4fc3f7, #1976d2);
-  border-radius: 2px;
-  box-shadow: 0 0 8px rgba(79, 195, 247, 0.5);
-}
-
-/* Add a subtle glow effect to active links */
-.header-nav .active a {
-  text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
-}
-
-@media (max-width: 768px) {
-  .app-header {
-    padding: 1rem 1.5rem;
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
   }
-
-  .header-nav ul {
-    gap: 1.25rem;
-    flex-wrap: wrap;
-  }
-
-  .header-nav a {
-    font-size: 0.95rem;
+  100% {
+    background-position: 200% center;
   }
 }
 
-@media (max-width: 480px) {
-  .header-nav ul {
-    gap: 1rem;
-  }
-
-  .header-nav a {
-    font-size: 0.9rem;
-  }
-}
 .header-background {
   position: absolute;
   top: 0;
@@ -130,15 +63,250 @@
   z-index: -1;
 }
 
+.header-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2.5rem;
+  justify-content: center;
+}
+
+.header-nav li {
+  animation: fadeInUp 0.6s ease-out calc(var(--nav-delay, 0) * 0.1s) both;
+}
+
+.header-nav li:nth-child(1) {
+  --nav-delay: 1;
+}
+.header-nav li:nth-child(2) {
+  --nav-delay: 2;
+}
+.header-nav li:nth-child(3) {
+  --nav-delay: 3;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-nav a {
+  color: #b0bec5;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 0.5rem 0;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.header-nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4fc3f7, #1976d2);
+  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 2px;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(79, 195, 247, 0.1);
+  border-radius: 6px;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.header-nav a:hover {
+  color: #4fc3f7;
+  transform: translateY(-3px) scale(1.05);
+  text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+}
+
+.header-nav a:hover::before {
+  width: 100%;
+}
+
+.header-nav a:hover::after {
+  transform: scale(1);
+}
+
 .nav-icon {
   margin-right: 0.5rem;
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .header-nav a:hover .nav-icon {
-  transform: translateY(-3px);
+  transform: translateY(-3px) rotate(10deg) scale(1.1);
+  color: #29b6f6;
+}
+
+.header-nav .active a {
+  color: #4fc3f7;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+}
+
+.header-nav .active a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #4fc3f7, #1976d2);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(79, 195, 247, 0.5);
+  animation: activeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes activeGlow {
+  from {
+    box-shadow: 0 0 8px rgba(79, 195, 247, 0.5);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.8);
+  }
 }
 
 .header-nav .active a .nav-icon {
   color: #4fc3f7;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Enhanced responsive design */
+@media (max-width: 1200px) {
+  .app-header {
+    padding: 1.1rem 2rem;
+  }
+
+  .header-nav ul {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .app-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .header-nav ul {
+    gap: 1.5rem;
+  }
+
+  .header-nav a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0.9rem 1.25rem;
+  }
+
+  .header-nav ul {
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .header-nav a {
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0.8rem 1rem;
+  }
+
+  .header-nav ul {
+    gap: 1rem;
+  }
+
+  .header-nav a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .header-nav ul {
+    gap: 0.8rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .header-nav a {
+    font-size: 0.85rem;
+    padding: 0.3rem 0;
+  }
+
+  .nav-icon {
+    margin-right: 0.3rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .app-header {
+    padding: 0.6rem 0.5rem;
+  }
+
+  .header-nav ul {
+    gap: 0.6rem;
+  }
+
+  .header-nav a {
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .app-header {
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .app-header {
+    padding: 0.5rem 1rem;
+  }
+
+  .header-nav a {
+    font-size: 0.9rem;
+  }
 }
