@@ -3,7 +3,6 @@ import Header from './components/Header'
 import GeneratorPage from './pages/GeneratorPage'
 import TemplatePreview from './pages/TemplatePreview'
 import AboutPage from './pages/AboutPage'
-import './App.css'
 
 function App() {
   return (

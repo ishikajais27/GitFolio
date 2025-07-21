@@ -1,10 +1,10 @@
-/* Enhanced GeneratorPage.css with modern design */
+/* Responsive Generator Page Styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 .generator-page {
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
   min-height: 100vh;
-  padding: 2rem 1rem;
+  padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 2vw, 1rem);
   display: flex;
   flex-direction: column;
   font-family: 'Inter', sans-serif;
@@ -105,22 +105,6 @@
   animation-delay: 6s;
 }
 
-.particle:nth-child(5) {
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: 2px;
-  animation-delay: 8s;
-}
-
-.particle:nth-child(6) {
-  top: 70%;
-  right: 40%;
-  width: 4px;
-  height: 4px;
-  animation-delay: 10s;
-}
-
 @keyframes particleFloat {
   0%,
   100% {
@@ -128,18 +112,18 @@
     opacity: 0.7;
   }
   33% {
-    transform: translateY(-20px) translateX(10px) scale(1.1);
+    transform: translateY(-15px) translateX(8px) scale(1.1);
     opacity: 1;
   }
   66% {
-    transform: translateY(10px) translateX(-10px) scale(0.9);
+    transform: translateY(8px) translateX(-8px) scale(0.9);
     opacity: 0.8;
   }
 }
 
 .page-header {
   max-width: 1000px;
-  margin: 0 auto 3rem;
+  margin: 0 auto clamp(2rem, 5vw, 3rem);
   text-align: center;
   position: relative;
   z-index: 2;
@@ -159,9 +143,9 @@
 
 .page-header h1 {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.8rem, 2vw, 1rem);
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -174,20 +158,21 @@
 .header-divider {
   position: relative;
   height: 2px;
-  width: 80px;
+  width: clamp(60px, 15vw, 80px);
   background: linear-gradient(90deg, transparent, #667eea, transparent);
-  margin: 1.5rem auto;
+  margin: clamp(1rem, 3vw, 1.5rem) auto;
   border-radius: 2px;
 }
 
 .divider-gem {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: clamp(8px, 3vw, 12px);
+  height: clamp(8px, 3vw, 12px);
   background: linear-gradient(135deg, #667eea, #764ba2);
   transform: rotate(45deg);
-  top: -5px;
-  left: calc(50% - 6px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
   border-radius: 2px;
   box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
   animation: gemPulse 2s ease-in-out infinite;
@@ -196,11 +181,11 @@
 @keyframes gemPulse {
   0%,
   100% {
-    transform: rotate(45deg) scale(1);
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
     box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
   }
   50% {
-    transform: rotate(45deg) scale(1.1);
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.1);
     box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
   }
 }
@@ -209,29 +194,23 @@
   color: #94a3b8;
   max-width: 600px;
   margin: 0 auto;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
   line-height: 1.6;
   font-weight: 400;
   opacity: 0.9;
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
 }
 
 .generator-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: clamp(1.5rem, 4vw, 2rem);
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   flex: 1;
   position: relative;
   z-index: 2;
-}
-
-@media (min-width: 1024px) {
-  .generator-grid {
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
-  }
 }
 
 .parser-column,
@@ -259,22 +238,8 @@
   }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .generator-page {
-    padding: 1.5rem 0.75rem;
-  }
-
-  .page-header {
-    margin-bottom: 2rem;
-  }
-
-  .generator-grid {
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
+/* Mobile-specific responsive breakpoints */
+@media (max-width: 374px) {
   .generator-page {
     padding: 1rem 0.5rem;
   }
@@ -285,21 +250,118 @@
 
   .generator-grid {
     gap: 1rem;
+    margin: 0 0.25rem;
   }
 
-  .header-divider {
-    width: 60px;
-  }
-
-  .divider-gem {
-    width: 10px;
-    height: 10px;
-    top: -4px;
-    left: calc(50% - 5px);
+  .page-subtitle {
+    padding: 0 0.5rem;
   }
 }
 
-/* High contrast mode */
+@media (min-width: 375px) and (max-width: 575px) {
+  .generator-page {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .generator-grid {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .generator-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .generator-grid {
+    gap: 1.5rem;
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .generator-page {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .generator-grid {
+    gap: 2rem;
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .generator-page {
+    padding: 2rem 1.5rem;
+  }
+
+  .generator-grid {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .generator-page {
+    padding: 2.5rem 2rem;
+  }
+
+  .generator-grid {
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    max-width: 1400px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .generator-page {
+    padding: 1rem;
+  }
+
+  .page-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .page-header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .generator-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .page-header {
+    margin-bottom: 1rem;
+  }
+
+  .generator-grid {
+    gap: 1rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .generator-page::before {
+    animation: none;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .particles .particle,
+  .divider-gem,
+  .generator-page::before,
+  .page-header,
+  .parser-column,
+  .preview-column {
+    animation: none;
+  }
+}
+
 @media (prefers-contrast: high) {
   .generator-page {
     background: #000;
@@ -311,12 +373,26 @@
     -webkit-text-fill-color: transparent;
   }
 }
+/* Add these to GeneratorPage.css */
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .particles .particle,
-  .divider-gem,
-  .generator-page::before {
-    animation: none;
+@media (max-width: 767px) {
+  .generator-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .parser-column,
+  .preview-column {
+    width: 100%;
+  }
+
+  .preview-column {
+    order: -1; /* Optional: move preview above parser on mobile */
+  }
+}
+
+@media (min-width: 768px) {
+  .generator-grid {
+    grid-template-columns: 1fr 1.3fr;
   }
 }

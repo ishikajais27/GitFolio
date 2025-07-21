@@ -129,53 +129,6 @@ export default function GitHubParser({ setMarkdown, setProfileData }) {
       setIsLoading(false)
     }
   }
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   if (!username) return
-
-  //   setIsLoading(true)
-  //   setError(null)
-
-  //   try {
-  //     const response = await fetch(
-  //       'https://gitfolio-backend.onrender.com/api/github',
-  //       {
-  //         method: 'POST',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify({
-  //           username,
-  //           template,
-  //           socialLinks: Object.fromEntries(
-  //             Object.entries(socialLinks).filter(
-  //               ([_, value]) => value && value.trim() !== ''
-  //             )
-  //           ),
-  //         }),
-  //       }
-  //     )
-
-  //     const data = await response.json()
-
-  //     if (!response.ok) {
-  //       // Enhanced error message for rate limits
-  //       if (data.error?.includes('rate limit')) {
-  //         throw new Error(
-  //           `GitHub API rate limit exceeded. ${
-  //             data.suggestion || 'Try again in 1 hour.'
-  //           }`
-  //         )
-  //       }
-  //       throw new Error(data.error || 'Failed to fetch profile')
-  //     }
-
-  //     setProfileData(data)
-  //     setMarkdown(data.markdownContent)
-  //   } catch (err) {
-  //     setError(err.message)
-  //   } finally {
-  //     setIsLoading(false)
-  //   }
-  // }
 
   return (
     <div className="parser-container">
