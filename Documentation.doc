@@ -1,0 +1,83 @@
+GitFolio — GitHub Profile README Generator
+
+GitFolio is a modern, feature-rich web application that helps developers generate beautiful and customizable GitHub Profile READMEs within seconds.
+Built with React + Vite, powered by GitHub API, and designed with a clean UI using Tailwind CSS.
+
+🔗 Live Demo: https://git-folio-frontend.vercel.app/
+
+📦 GitHub Repository: https://github.com/ishikajais27/GitFolio
+
+Create your perfect GitHub Profile README using customizable templates and live preview.
+
+🟣 Template Gallery
+
+Browse through multiple templates—Professional, Creative, Minimalist, Detailed—and generate instantly.
+
+✨ Features
+🔹 GitHub Username Integration
+
+Automatically fetches GitHub profile details using the GitHub REST API.
+
+Generates accurate, updated README content.
+
+🔹 Live README Preview
+
+See changes instantly before downloading.
+
+Smooth UI built with React & Tailwind CSS.
+
+🔹 Multiple Templates
+
+Professional
+
+Creative
+
+Minimalist
+
+Detailed
+Each template is designed to suit different developer styles.
+
+🔹 Social Links Support
+
+Add social media: LinkedIn, Portfolio, Twitter, etc.
+
+Auto-inserts icons and hyperlinks into your README.
+
+🔹 One-Click Download
+
+Export your README.md file instantly.
+
+🔹 Fast, Lightweight, Modern
+
+Built using Vite for incredible build and load speed.
+
+Clean, responsive UI for all devices.
+
+🛠 Tech Stack
+Category	Technologies
+Frontend	React.js, Vite, Tailwind CSS
+Backend / API	GitHub REST API
+Tools	Axios, React Icons
+Deployment	Vercel
+
+⚙️ How It Works
+
+Enter your GitHub Username
+
+Choose your template style
+
+Add optional social links
+
+View your live README preview
+
+Click Download to export your .md file
+
+🌐 Live Demo & Source Code
+
+🔗 Try Now: https://git-folio-frontend.vercel.app/
+
+📦 Source Code: https://github.com/ishikajais27/GitFolio
+
+📜 License
+
+This project is open-source and available under the MIT License.
